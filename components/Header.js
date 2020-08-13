@@ -26,21 +26,7 @@ const Header = () => {
   const toggle = () => {
     setIsOpen(!isOpen);
   };
-
-  const { autoModeActive, darkModeActive, switchToAutoMode, switchToDarkMode, switchToLightMode } = useDarkMode()
-
-  const findActive = (text) => {
-    if (autoModeActive) return text === 'auto'
-    else if (darkModeActive) return text === 'dark'
-    else return text === 'light'
-  }
-
-  const toggleMode = (text) => {
-    if (text === 'Auto') switchToAutoMode()
-    if (text === 'Dark') switchToDarkMode()
-    if (text === 'Light') switchToLightMode()
-  }
-
+  
 
   return (
     <React.Fragment>
@@ -48,16 +34,16 @@ const Header = () => {
         <Link href="/">
           <NavLink style={{ cursor: 'pointer' }} className="font-weight-bold">
             {<img src={`/static/images/technically.png`} alt="technically" style={{ width: '70%', height: '24px'}} />}
-            </NavLink>
+          </NavLink>
         </Link>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            {/* <React.Fragment>
-              <button className="btn btn-warning mr-2">
-                <i className ="fa fa-search" aria-hidden="true"></i>
-              </button>
-            </React.Fragment> */}
+             {/* <NavItem>
+              <a href="/search" className="btn btn-outline-warning mr-2" style={{cursor: 'pointer'}}>
+                <i class="fa fa-search"></i>
+              </a>
+            </NavItem> */}
             <React.Fragment>
               <NavItem>
                 <Link href="/blogs">
@@ -115,7 +101,7 @@ const Header = () => {
 
             {isAuth() && isAuth().role === 1 && (
                 <NavItem>
-                  <a href="/admin/crud/blog" className="btn btn-warning" style={{ cursor: 'pointer' }}>Write Blog</a>
+                  <a href="/admin/crud/blog" className="btn btn-outline-warning" style={{ cursor: 'pointer' }}>Write Blog</a>
               </NavItem>
             )}
           </Nav>

@@ -13,6 +13,20 @@ import { Parallax } from "react-parallax";
 const SingleBlog = ({ blog, query }) => {
     const [related, setRelated] = useState([]);
 
+    //
+    // const blogHit = () => {
+    //     reviewCounter(blog.slug).then(data => {
+    //         if(data.error) {
+    //             console.log(data.error);
+    //         } else {
+    //             if(data.unique === 1) {
+    //                 setVisitorToken();
+    //             }
+    //         }
+    //     });
+    // }
+    //
+
     const loadRelated = () => {
         listRelated({ blog }).then(data => {
             if (data.error) {
@@ -47,24 +61,93 @@ const SingleBlog = ({ blog, query }) => {
         </Head>
     );
 
+
+
     const showBlogCategories = blog =>
-        blog.categories.map((c, i) => (
-            <Link key={i} href={`/categories/${c.slug}`}>
-                <a className="btn btn-warning mr-1 ml-1 mt-3">{c.name}</a>
-            </Link>
-        ));
+        blog.categories.map((c, i) => {
+            let number = Math.round(Math.random() * 10) % 7;
+            switch(number) {
+                case 1:
+                    return <Link href={`/categories/${c.slug}`} key={i}>
+                        <a className="btn btn-outline-secondary mr-1 ml-1 mt-3">{c.name}</a>
+                    </Link>
+                    break;
+                case 2:
+                    return <Link href={`/categories/${c.slug}`} key={i}>
+                        <a className="btn btn-outline-primary mr-1 ml-1 mt-3">{c.name}</a>
+                    </Link>
+                case 3:
+                    return <Link href={`/categories/${c.slug}`} key={i}>
+                        <a className="btn btn-outline-warning mr-1 ml-1 mt-3">{c.name}</a>
+                    </Link>
+                case 4:
+                    return <Link href={`/categories/${c.slug}`} key={i}>
+                        <a className="btn btn-outline-danger mr-1 ml-1 mt-3">{c.name}</a>
+                    </Link>
+                case 5:
+                    return <Link href={`/categories/${c.slug}`} key={i}>
+                        <a className="btn btn-outline-info mr-1 ml-1 mt-3">{c.name}</a>
+                    </Link>
+                case 6:
+                    return <Link href={`/categories/${c.slug}`} key={i}>
+                        <a className="btn btn-outline-success mr-1 ml-1 mt-3">{c.name}</a>
+                    </Link>
+                case 7:
+                    return <Link href={`/categories/${c.slug}`} key={i}>
+                        <a className="btn btn-outline-dark mr-1 ml-1 mt-3">{c.name}</a>
+                    </Link>
+                default :
+                    return <Link href={`/categories/${c.slug}`} key={i}>
+                        <a className="btn btn-outline-warning mr-1 ml-1 mt-3">{c.name}</a>
+                    </Link>
+            }
+        });
+    
 
     const showBlogTags = blog =>
-        blog.tags.map((t, i) => (
-            <Link key={i} href={`/tags/${t.slug}`}>
-                <a className="btn btn-outline-warning mr-1 ml-1 mt-3">{t.name}</a>
-            </Link>
-        ));
+        blog.tags.map((t, i) => {
+            let number = Math.round(Math.random() * 10) % 7;
+            switch(number) {
+                case 1:
+                    return <Link href={`/categories/${t.slug}`} key={i}>
+                        <a className="btn btn-outline-secondary mr-1 ml-1 mt-3">{t.name}</a>
+                    </Link>
+                    break;
+                case 2:
+                    return <Link href={`/categories/${t.slug}`} key={i}>
+                        <a className="btn btn-outline-primary mr-1 ml-1 mt-3">{t.name}</a>
+                    </Link>
+                case 3:
+                    return <Link href={`/categories/${t.slug}`} key={i}>
+                        <a className="btn btn-outline-warning mr-1 ml-1 mt-3">{t.name}</a>
+                    </Link>
+                case 4:
+                    return <Link href={`/categories/${t.slug}`} key={i}>
+                        <a className="btn btn-outline-danger mr-1 ml-1 mt-3">{t.name}</a>
+                    </Link>
+                case 5:
+                    return <Link href={`/categories/${t.slug}`} key={i}>
+                        <a className="btn btn-outline-info mr-1 ml-1 mt-3">{t.name}</a>
+                    </Link>
+                case 6:
+                    return <Link href={`/categories/${t.slug}`} key={i}>
+                        <a className="btn btn-outline-success mr-1 ml-1 mt-3">{t.name}</a>
+                    </Link>
+                case 7:
+                    return <Link href={`/categories/${t.slug}`} key={i}>
+                        <a className="btn btn-outline-dark mr-1 ml-1 mt-3">{t.name}</a>
+                    </Link>
+                default :
+                    return <Link href={`/categories/${t.slug}`} key={i}>
+                        <a className="btn btn-outline-warning mr-1 ml-1 mt-3">{t.name}</a>
+                    </Link>
+            }
+        });
 
     const showRelatedBlog = () => {
         return related.map((blog, i) => (
             <div className="col-md-4" key={i}>
-                <article>
+                <article key={i}>
                     <SmallCard blog={blog} />
                 </article>
             </div>
@@ -74,7 +157,7 @@ const SingleBlog = ({ blog, query }) => {
     const showComments = () => {
         return (
             <div>
-                <DisqusThread id={blog.id} title={blog.title} path={`/blogs/${blog.slug}`}/>
+                <DisqusThread id={blog._id} title={blog.title} path={`/blogs/${blog.slug}`}/>
             </div>
         )
     }
@@ -86,24 +169,28 @@ const SingleBlog = ({ blog, query }) => {
                 <main>
                     <article>
                         <div className="container-fluid">
-                        <Parallax bgImage={`${API}/blog/photo/${blog.slug}`} strength={500}>
-                            <div style={{ height: 500 }}>
-                                {/* <div style={insideStyles}>HTML inside the parallax</div> */}
+                        {/* <Parallax bgImage={`${API}/blog/photo/${blog.slug}`} strength={500}>
+                            <div>
+                                <h1 style={{color: "white"}} className="display-2 pb-3 pt-3 text-center font-weight-bold">{blog.title}</h1>
                             </div>
-                        </Parallax>
-                            {/* <section>
-                                <div className="row" style={{ marginTop: '-30px' }}>
+                        </Parallax> */}
+                            <section>
+                                <div className="title-container">
                                     <img
                                         src={`${API}/blog/photo/${blog.slug}`}
                                         alt={blog.title}
                                         className="img img-fluid featured-image"
                                     />
+                                    {/* <div className="bottom-centered">
+                                        <h1 className="font-weight-bold">{blog.title}</h1>
+                                    </div> */}
+                                    
                                 </div>
-                            </section> */}
+                            </section>
 
                             <section>
                                 <div className="container">
-                                    <h1 className="display-2 pb-3 pt-3 text-center font-weight-bold">{blog.title}</h1>
+                                    <h1 className="pb-3 pt-3 text-center font-weight-bold">{blog.title}</h1>
 
                                     <div className="pb-3 text-center">
                                         {showBlogCategories(blog)}
@@ -120,26 +207,25 @@ const SingleBlog = ({ blog, query }) => {
                                 <div className="col-md-12 lead">{renderHTML(blog.body)}</div>
                             </section>
                             <section>
-                                <hr/>
                             <div className="row pl-5">
-                                        <div>
-                                            <img src={`${API}/user/photo/${blog.postedBy.username}`}
-                                                className="avatar"
-                                                style={{maxHeight: '100px', maxWidth: '100%'}}
-                                                alt="user profile"/>
-                                        </div>
-                                        <div className="pl-4 pt-2">
-                                            <p className="text-muted">
-                                                Written by <Link href={`/profile/${blog.postedBy.username}`}>
-                                                    <a>{blog.postedBy.name}</a> 
-                                                </Link>
-                                                , Published {moment(blog.updatedAt).fromNow()}
-                                                <br/>
-                                                    {blog.postedBy.email}
-                                                <br/>
-                                                {blog.postedBy.about}
-                                            </p>
-                                        </div>
+                                <div>
+                                    <img src={`${API}/user/photo/${blog.postedBy.username}`}
+                                        className="avatar"
+                                        style={{maxHeight: '100%', maxWidth: '100%'}}
+                                        alt="user profile"/>
+                                </div>
+                                <div className="pl-4 pt-2">
+                                    <p className="text-muted">
+                                        Written by <Link href={`/profile/${blog.postedBy.username}`}>
+                                                <a>{blog.postedBy.name}</a> 
+                                        </Link>
+                                        , Published {moment(blog.updatedAt).fromNow()}
+                                        <br/>
+                                            {blog.postedBy.email}
+                                        <br/>
+                                        {blog.postedBy.about}
+                                    </p>
+                                </div>
                             </div>
                             <hr/>
                             </section>

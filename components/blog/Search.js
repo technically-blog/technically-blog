@@ -32,8 +32,8 @@ const Search = () => {
 
                 {results.map((blog, i) => {
                     return (
-                        <div className="card mb-2">
-                            <div className="card-body">
+                        <div key={i} className="card mb-2">
+                            <div key={i} className="card-body">
                                 <div key={i}>
                                     <Link href={`/blogs/${blog.slug}`}>
                                         <a className="text-primary">{blog.title}</a>
@@ -49,16 +49,15 @@ const Search = () => {
 
     const searchForm = () => (
         <form onSubmit={searchSubmit}>
-            <div className="container">
-                <div className="row text-center">
-                    <div className="col-sm-8 pl-20">
-                        <input type="search" className="form-control" placeholder="Search blogs" onChange={handleChange} />
-                    </div>
-
-                    <div>
-                    <button className="btn btn-warning mr-2" type="submit">
-                        <i className ="fa fa-search" aria-hidden="true"></i>
-                    </button>
+            <div className="row justify-content-center">
+                <div className="col-md-8 text-center">
+                    <div className="wrap">
+                        <div className="search">
+                            <input type="text" className="searchTerm" placeholder="What are you looking for?" onChange={handleChange}/>
+                            <button type="submit" className="searchButton">
+                                <i className="fa fa-search"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

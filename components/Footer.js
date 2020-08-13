@@ -5,28 +5,16 @@ const Footer =  () => {
             <footer className="site-footer">
                         <div className="container">
                             <div className="row">
-                                <div className="col-sm-12 col-md-6">
+                                <div className="col-sm-12 col-md-8">
                                     <h6>About</h6>
-                                    <p className="text-justify">www.t3chnically.com <i>IS A MULTIUSER BLOGGING PLATFORM </i> 
+                                    <p className="text-justify">www.t3chnically.com <strong>IS A MULTIUSER BLOGGING PLATFORM </strong> 
                                         an initiative to help the upcoming programmers with the coding blogs on all latest technologies.
                                         if you have a idea we publish that and you make revenue on the basis of your 
                                         content engagement & content reach.
                                     </p>
                                 </div>
 
-                                <div className="col-xs-6 col-md-3">
-                                    <h6>Categories</h6>
-                                    <ul className="footer-links">
-                                    <li><a href="http://t3chnically.com/category/c-language/">C</a></li>
-                                    <li><a href="http://t3chnically.com/category/front-end-development/">UI Design</a></li>
-                                    <li><a href="http://t3chnically.com/category/back-end-development/">PHP</a></li>
-                                    <li><a href="http://t3chnically.com/category/java-programming-language/">Java</a></li>
-                                    <li><a href="http://t3chnically.com/category/android/">Android</a></li>
-                                    <li><a href="http://t3chnically.com/category/templates/">Templates</a></li>
-                                    </ul>
-                                </div>
-
-                                <div className="col-xs-6 col-md-3">
+                                <div className="col-xs-6 col-md-4">
                                     <h6>Quick Links</h6>
                                     <ul className="footer-links">
                                     <li><a href="http://t3chnically.com/about/">About Us</a></li>

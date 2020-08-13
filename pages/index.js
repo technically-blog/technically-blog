@@ -2,6 +2,7 @@ import Layout from '../components/Layout';
 import Link from 'next/link';
 
 const Index = () => {
+
     return (
         <Layout>
             <article className="overflow-hidden">
@@ -11,9 +12,9 @@ const Index = () => {
                             <h2 className="display-4 font-weight-bold">
                                 If it isn't technically written 
                                 <br/>
-                                <h1 className="display-3 font-weight-bold">
+                                <strong className="display-3 font-weight-bold">
                                     its literature
-                                </h1>
+                                </strong>
                             </h2>
                         </div>
                     </div>
@@ -66,7 +67,7 @@ const Index = () => {
                         </div>
                     </div>
                 </div>
-
+                
             </article>
         </Layout>
     );

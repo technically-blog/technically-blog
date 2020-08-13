@@ -7,6 +7,9 @@
   top: 10px;
 }
 
+/*
+QUILL
+*/
 .ql-editor {
     border-bottom-left-radius: 0.5em;
     border-bottom-right-radius: 0.5em;
@@ -24,11 +27,75 @@
   overflow: visible;
 } */
 
-.featured-image {
-    width: 100%;
-    max-height: 500px;
-    object-fit: cover;
+/*
+*/
+
+/*
+FONTS
+*/
+html { font-size: 0.5rem; }
+
+@media (min-width: 576px) {
+    html { font-size: 0.5rem; }
 }
+@media (min-width: 768px) {
+    html { font-size: 0.5rem; }
+}
+@media (min-width: 992px) {
+    html { font-size: 0.7rem; }
+}
+@media (min-width: 1200px) {
+    html { font-size: 1rem; }
+}
+/*
+*/
+
+
+/*
+IMAGES
+*/
+img {
+  max-width:100%;
+  height: auto;
+  display:block;
+}
+/*
+*/
+
+.title-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.bottom-centered {
+  position: absolute;
+  bottom: 0.1rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/*
+IMAGE FEATURED
+*/
+.featured-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+}
+/*
+*/
+
+/*
+QUILL VIDEO
+*/
+.ql-video {
+  display: block;
+  max-width: 100%;
+  height: 25rem;
+  width: 100%;
+}
+/*
+*/
 
 a.btn {
     text-decoration: none;
@@ -49,8 +116,8 @@ a.btn {
 
 .avatar {
   vertical-align: middle;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 
@@ -58,6 +125,49 @@ a.btn {
 .form-control:focus {
   border-color: #ff9900c2;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #ff9900c2;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #ff9900c2;
+  border-right: none;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #000000;
+}
+
+.searchTerm:focus{
+  border-color: #ff9900c2;
+}
+
+.searchButton {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ff9900c2;
+  background: #ff9900c2;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 50%;
+  position: absolute;
+  margin-top: 16px;
+  /* top: 50%; */
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /*
@@ -69,7 +179,7 @@ a.btn {
   background-color:#26272b;
   margin-top: 150px;
   padding:45px 0 20px;
-  font-size:15px;
+  /* font-size:15px; */
   line-height:24px;
   color:#737373;
 }
@@ -85,7 +195,7 @@ a.btn {
 .site-footer h6
 {
   color:#fff;
-  font-size:16px;
+  /* font-size:16px; */
   text-transform:uppercase;
   margin-top:5px;
   letter-spacing:2px
@@ -145,6 +255,7 @@ a.btn {
   {
     margin-bottom:30px
   }
+  html { font-size: 0.7rem; }
 }
 @media (max-width:767px)
 {
@@ -156,6 +267,7 @@ a.btn {
   {
     text-align:center
   }
+  html { font-size: 0.7rem; }
 }
 .social-icons
 {
@@ -174,12 +286,12 @@ a.btn {
   text-transform:uppercase;
   color:#96a2b2;
   font-weight:700;
-  font-size:13px
+  /* font-size:13px */
 }
 .social-icons a{
   background-color:#eceeef;
   color:#818a91;
-  font-size:16px;
+  /* font-size:16px; */
   display:inline-block;
   line-height:44px;
   width:44px;
@@ -201,7 +313,7 @@ a.btn {
   line-height:34px;
   height:34px;
   width:34px;
-  font-size:14px
+  /* font-size:14px */
 }
 .social-icons a.facebook:hover
 {

@@ -25,8 +25,8 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             <meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
             <meta property="og:site_name" content={`${APP_NAME}`} />
 
-            <meta property="og:image" content={`${DOMAIN}/static/images/technically.jpg`} />
-            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/technically.jpg`} />
+            <meta property="og:image" content={`${DOMAIN}/static/images/inbrief.jpg`} />
+            <meta property="og:image:secure_url" content={`${DOMAIN}/static/images/inbrief.jpg`} />
             <meta property="og:image:type" content="image/jpg" />
             <meta property="fb:app_id" content={`${FB_APP_ID}`} />
         </Head>
@@ -77,7 +77,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             let number = Math.round(Math.random() * 10) % 7;
             switch(number) {
                 case 1:
-                    return <Link href={`/categories/${c.slug}`} key={i}>
+                    return <Link href={`/categories/[c.slug]/`} as={`/categories/${c.slug}`} key={i}>
                         <a className="btn btn-outline-secondary mr-1 ml-1 mt-3">{c.name}</a>
                     </Link>
                     break;

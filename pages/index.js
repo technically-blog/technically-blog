@@ -10,10 +10,10 @@ const Index = () => {
                     <div className="row">
                         <div className="col-md-12 text-center">
                             <h2 className="display-4 font-weight-bold">
-                                If it isn't technically written 
+                                Learn Your Stack 
                                 <br/>
                                 <strong className="display-3 font-weight-bold">
-                                    its literature
+                                   In Brief
                                 </strong>
                             </h2>
                         </div>

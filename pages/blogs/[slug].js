@@ -167,30 +167,21 @@ const SingleBlog = ({ blog, query }) => {
             {head()}
             <Layout>
                 <main>
-                    <article>
-                        <div className="container-fluid">
-                        {/* <Parallax bgImage={`${API}/blog/photo/${blog.slug}`} strength={500}>
-                            <div>
-                                <h1 style={{color: "white"}} className="display-2 pb-3 pt-3 text-center font-weight-bold">{blog.title}</h1>
-                            </div>
-                        </Parallax> */}
-                            <section>
-                                <div className="title-container">
+                <div className="title-container">
                                     <img
                                         src={`${API}/blog/photo/${blog.slug}`}
                                         alt={blog.title}
                                         className="img img-fluid featured-image"
                                     />
-                                    {/* <div className="bottom-centered">
-                                        <h1 className="font-weight-bold">{blog.title}</h1>
-                                    </div> */}
-                                    
+                                    <div className="centered bg-text">
+                                    <h1 className="pb-3 pt-3 text-center font-weight-bold">{blog.title}</h1>
+                                    </div>
                                 </div>
-                            </section>
-
+                    <article>
+                        <div className="container-fluid">
                             <section>
                                 <div className="container">
-                                    <h1 className="pb-3 pt-3 text-center font-weight-bold">{blog.title}</h1>
+                                    {/* <h1 className="pb-3 pt-3 text-center font-weight-bold">{blog.title}</h1> */}
 
                                     <div className="pb-3 text-center">
                                         {showBlogCategories(blog)}

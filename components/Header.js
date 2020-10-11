@@ -33,7 +33,7 @@ const Header = () => {
       <Navbar color="dark" light expand="md">
         <Link href="/">
           <NavLink style={{ cursor: 'pointer' }} className="font-weight-bold">
-            {<img src={`/static/images/technically.png`} alt="technically" style={{ width: '70%', height: '24px'}} />}
+            {<img src={`/static/images/inbrief.png`} alt="In Brief" />}
           </NavLink>
         </Link>
         <NavbarToggler onClick={toggle} />
@@ -107,7 +107,8 @@ const Header = () => {
           </Nav>
         </Collapse>
       </Navbar>
-      <Search />
+      <div className="container mb-2"></div>
+      {/* <Search /> */}
     </React.Fragment>
   );
 };

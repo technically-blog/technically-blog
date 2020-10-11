@@ -7,7 +7,7 @@ const Footer =  () => {
                             <div className="row">
                                 <div className="col-sm-12 col-md-8">
                                     <h6>About</h6>
-                                    <p className="text-justify">www.t3chnically.com <strong>IS A MULTIUSER BLOGGING PLATFORM </strong> 
+                                    <p className="text-justify">www.inbrief.dev <strong>IS A MULTIUSER BLOGGING PLATFORM </strong> 
                                         an initiative to help the upcoming programmers with the coding blogs on all latest technologies.
                                         if you have a idea we publish that and you make revenue on the basis of your 
                                         content engagement & content reach.
@@ -17,11 +17,11 @@ const Footer =  () => {
                                 <div className="col-xs-6 col-md-4">
                                     <h6>Quick Links</h6>
                                     <ul className="footer-links">
-                                    <li><a href="http://t3chnically.com/about/">About Us</a></li>
-                                    <li><a href="http://t3chnically.com/contact/">Contact Us</a></li>
-                                    <li><a href="http://t3chnically.com/contribute-at-scanfcode/">Contribute</a></li>
-                                    <li><a href="http://t3chnically.com/privacy-policy/">Privacy Policy</a></li>
-                                    <li><a href="http://t3chnically.com/sitemap/">Sitemap</a></li>
+                                    <li><a href="http://inbrief.dev/about/">About Us</a></li>
+                                    <li><a href="http://inbrief.dev/contact/">Contact Us</a></li>
+                                    <li><a href="http://inbrief.dev/contribute-at-scanfcode/">Contribute</a></li>
+                                    <li><a href="http://inbrief.dev/privacy-policy/">Privacy Policy</a></li>
+                                    <li><a href="http://inbrief.dev/sitemap/">Sitemap</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@ const Footer =  () => {
                             <div className="row">
                             <div className="col-md-8 col-sm-6 col-xs-12">
                                 <p className="copyright-text">Copyright &copy; 2020 All Rights Reserved by 
-                            <a href="#"> technically</a>.
+                            <a href="www.inbrief.dev"> In Brief</a>.
                                 </p>
                             </div>
 

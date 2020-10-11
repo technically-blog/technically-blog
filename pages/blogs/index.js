@@ -121,36 +121,36 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             let number = Math.round(Math.random() * 10) % 7;
             switch(number) {
                 case 1:
-                    return <Link href={`/categories/${t.slug}`} key={i}>
+                    return <Link href={`/categories/[t.slug]`} as={`/tags/${t.slug}`} key={i}>
                         <a className="btn btn-secondary mr-1 ml-1 mt-3">{t.name}</a>
                     </Link>
                     break;
                 case 2:
-                    return <Link href={`/categories/${t.slug}`} key={i}>
+                    return <Link href={`/categories/[t.slug]`} as={`/tags/${t.slug}`} key={i}>
                         <a className="btn btn-primary mr-1 ml-1 mt-3">{t.name}</a>
                     </Link>
                 case 3:
-                    return <Link href={`/categories/${t.slug}`} key={i}>
+                    return <Link href={`/categories/[t.slug]`} as={`/tags/${t.slug}`} key={i}>
                         <a className="btn btn-warning mr-1 ml-1 mt-3">{t.name}</a>
                     </Link>
                 case 4:
-                    return <Link href={`/categories/${t.slug}`} key={i}>
+                    return <Link href={`/categories/[t.slug]`} as={`/tags/${t.slug}`} key={i}>
                         <a className="btn btn-danger mr-1 ml-1 mt-3">{t.name}</a>
                     </Link>
                 case 5:
-                    return <Link href={`/categories/${t.slug}`} key={i}>
+                    return <Link href={`/categories/[t.slug]`} as={`/tags/${t.slug}`} key={i}>
                         <a className="btn btn-info mr-1 ml-1 mt-3">{t.name}</a>
                     </Link>
                 case 6:
-                    return <Link href={`/categories/${t.slug}`} key={i}>
+                    return <Link href={`/categories/[t.slug]`} as={`/tags/${t.slug}`} key={i}>
                         <a className="btn btn-success mr-1 ml-1 mt-3">{t.name}</a>
                     </Link>
                 case 7:
-                    return <Link href={`/categories/${t.slug}`} key={i}>
+                    return <Link href={`/categories/[t.slug]`} as={`/tags/${t.slug}`} key={i}>
                         <a className="btn btn-dark mr-1 ml-1 mt-3">{t.name}</a>
                     </Link>
                 default :
-                    return <Link href={`/categories/${t.slug}`} key={i}>
+                    return <Link href={`/categories/[t.slug]`} as={`/tags/${t.slug}`} key={i}>
                         <a className="btn btn-warning mr-1 ml-1 mt-3">{t.name}</a>
                     </Link>
             }

@@ -30,7 +30,7 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      <Navbar color="dark" light expand="md">
+      <Navbar sticky="top"  className="navbar" light expand="md">
         <Link href="/">
           <NavLink style={{ cursor: 'pointer' }} className="font-weight-bold">
             {<img src={`/static/images/inbrief.png`} alt="In Brief" />}
@@ -47,7 +47,7 @@ const Header = () => {
             <React.Fragment>
               <NavItem>
                 <Link href="/blogs">
-                  <NavLink style={{ cursor: 'pointer', color: '#ffffff' }} >Blogs</NavLink>
+                  <NavLink style={{ cursor: 'pointer', color: "#000000" }} >Blogs</NavLink>
                 </Link>
               </NavItem>
             </React.Fragment>
@@ -56,12 +56,12 @@ const Header = () => {
               <React.Fragment>
                 <NavItem>
                   <Link href="/signin">
-                    <NavLink style={{ cursor: 'pointer', color: '#ffffff' }} >Signin</NavLink>
+                    <NavLink style={{ cursor: 'pointer', color: '#000000' }} >Signin</NavLink>
                   </Link>
                 </NavItem>
                 <NavItem>
                   <Link href="/signup">
-                    <NavLink style={{ cursor: 'pointer', color: '#ffffff' }} >Signup</NavLink>
+                    <NavLink style={{ cursor: 'pointer', color: '#000000' }} >Signup</NavLink>
                   </Link>
                 </NavItem>
               </React.Fragment>
@@ -70,7 +70,7 @@ const Header = () => {
             {isAuth() && isAuth().role === 0 && (
               <NavItem>
                 <Link href="/user">
-                  <NavLink style={{ cursor: 'pointer', color: '#ffffff' }} >{`${isAuth().name}'s Dashboard`}</NavLink>
+                  <NavLink style={{ cursor: 'pointer', color: '#000000' }} >{`${isAuth().name}'s Dashboard`}</NavLink>
                 </Link>
               </NavItem>
             )}
@@ -78,14 +78,14 @@ const Header = () => {
             {isAuth() && isAuth().role === 1 && (
               <NavItem>
                 <Link href="/admin">
-                  <NavLink style={{ cursor: 'pointer', color: '#ffffff' }} >{`${isAuth().name}'s Dashboard`}</NavLink>
+                  <NavLink style={{ cursor: 'pointer', color: '#000000' }} >{`${isAuth().name}'s Dashboard`}</NavLink>
                 </Link>
               </NavItem>
             )}
 
             {isAuth() && (
               <NavItem>
-                <NavLink style={{ cursor: 'pointer', color: '#ffffff' }} onClick={() => signout(() => Router.replace(`/signin`))}>
+                <NavLink style={{ cursor: 'pointer', color: '#000000' }} onClick={() => signout(() => Router.replace(`/signin`))}>
                   Signout
                 </NavLink>
               </NavItem>
@@ -94,7 +94,7 @@ const Header = () => {
             {isAuth() && isAuth().role === 0 && (
                 <NavItem>
                   <Link href="/user/crud/blog">
-                    <NavLink className="btn btn-primary text-light" style={{ cursor: 'pointer' }}>Write Blog</NavLink>
+                    <NavLink className="btn btn-outline-warning" style={{ cursor: 'pointer' }}>Write Blog</NavLink>
                   </Link>
               </NavItem>
             )}
@@ -107,8 +107,6 @@ const Header = () => {
           </Nav>
         </Collapse>
       </Navbar>
-      <div className="container mb-2"></div>
-      {/* <Search /> */}
     </React.Fragment>
   );
 };

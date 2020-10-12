@@ -1,10 +1,16 @@
 #nprogress .bar {
-    background: #ff9400;
+    background: rgb(255,153,0);
     height: 3px !important;
 }
 
 #nprogress .spinner {
   top: 10px;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.5);
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  backdrop-filter: blur(10px);
 }
 
 /*
@@ -19,7 +25,7 @@ QUILL
 .ql-toolbar {
   border-top-left-radius: 0.5em;
   border-top-right-radius: 0.5em;
-  background: #ff950065;
+  background: rgb(255,153,0);
 }
 
 /* .ql-syntax {
@@ -33,16 +39,16 @@ QUILL
 /*
 FONTS
 */
-html { font-size: 0.5rem; }
+html { font-size: 0.6rem; }
 
 @media (min-width: 576px) {
-    html { font-size: 0.5rem; }
+    html { font-size: 0.6rem; }
 }
 @media (min-width: 768px) {
-    html { font-size: 0.5rem; }
+    html { font-size: 0.6rem; }
 }
 @media (min-width: 992px) {
-    html { font-size: 0.7rem; }
+    html { font-size: 0.8rem; }
 }
 @media (min-width: 1200px) {
     html { font-size: 1rem; }
@@ -124,7 +130,7 @@ a.btn {
 }
 
 .btn-warning {
-    background-color: #ff9900c2;
+    background-color: rgb(255,153,0);;
 }
 
 .btn-secondary {
@@ -144,7 +150,7 @@ a.btn {
 
 /* search */
 .form-control:focus {
-  border-color: #ff9900c2;
+  border-color: rgb(255,153,0);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #ff9900c2;
 }
 
@@ -156,7 +162,7 @@ a.btn {
 
 .searchTerm {
   width: 100%;
-  border: 3px solid #ff9900c2;
+  border: 3px solid rgb(255,153,0);
   border-right: none;
   padding: 5px;
   height: 40px;
@@ -166,14 +172,14 @@ a.btn {
 }
 
 .searchTerm:focus{
-  border-color: #ff9900c2;
+  border-color: rgb(255,153,0);
 }
 
 .searchButton {
   width: 40px;
   height: 40px;
-  border: 1px solid #ff9900c2;
-  background: #ff9900c2;
+  border: 1px solid rgb(255,153,0);
+  background:rgb(255,153,0);
   text-align: center;
   color: #fff;
   border-radius: 0 5px 5px 0;
@@ -197,7 +203,7 @@ a.btn {
 
 .site-footer
 {
-  background-color:#26272b;
+  background-color: rgb(0, 0, 0);
   margin-top: 150px;
   padding:45px 0 20px;
   /* font-size:15px; */

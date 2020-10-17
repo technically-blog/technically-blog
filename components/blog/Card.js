@@ -19,51 +19,43 @@ const Card = ({ blog }) => {
         ));
 
     return (
-        <div className="card mb-2">
-            <div className="card-body">
-                <div className="lead pb-4">
+                <div className="lead" style={{paddingBottom: '16px'}}>
                     <header>
-                        <Link href={`/blogs/${blog.slug}`}>
-                           <h2 className="pt-3 pb-3 font-weight-bold text-dark" style={{cursor: 'pointer'}}>{blog.title}</h2>
-                        </Link>
+                        <div className="row">
+                            <div className="col-md-8">
+                                    <div className="row bulb" style={{alignItems: 'center', padding: 'inherit'}}>
+                                        <div style={{
+                                                verticalAlign: 'middle',
+                                                width: '25px',
+                                                height: '25px',
+                                                borderRadius: '50%'
+                                            }}>
+                                            <img src={`${API}/user/photo/${blog.postedBy.username}`}
+                                                alt= {`${blog.postedBy.name}`}/>
+                                        </div>
+                                        <div style={{fontSize: 'small', fontWeight: '600', color: 'black'}}>
+                                            <Link href={`/profile/${blog.postedBy.username}`}>
+                                                <a>{blog.postedBy.name}</a>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                    <Link href={`/blogs/${blog.slug}`}>
+                                       <div style={{cursor: 'pointer', fontSize: 'larger', fontWeight: '600', textOverflow: 'ellipsis'}}>{blog.title}</div>
+                                    </Link>
+                                    <div className="bulb" style={{fontSize: 'medium', color: 'gray', overflow: 'hidden', textOverflow: 'ellipsis'}}>{renderHTML(blog.gist)}</div>    
+                                    <div style={{fontSize: 'smaller'}}>{moment(blog.updatedAt).fromNow()} ⍟ {Math.round(Math.random() * 10) % 15}min read</div>
+                            </div>
+                            <div className="col-md-4">
+                                    <img
+                                        className="img img-fluid"
+                                        style={{ maxHeight: '320px', width: '100%', paddingTop: '0.7rem' }}
+                                        src={`${API}/blog/photo/${blog.slug}`}
+                                        alt={blog.title}
+                                    />
+                            </div>
+                        </div>
                     </header>
-                    <section>
-                        <p className="mark ml-1 pt-2 pb-2">
-                            Written by <Link href={`/profile/${blog.postedBy.username}`}>
-                                            <a>{blog.postedBy.name}</a>
-                                        </Link> | Published {moment(blog.updatedAt).fromNow()}
-                        </p>
-                    </section>
-                    <section>
-                        {showBlogCategories(blog)}
-                        {showBlogTags(blog)}
-                        <br />
-                        <br />
-                    </section>
-
-                    <div className="row">
-                        <div className="col-md-4">
-                            <section>
-                                <img
-                                    className="img img-fluid"
-                                    style={{ maxHeight: '280px', width: '100%' }}
-                                    src={`${API}/blog/photo/${blog.slug}`}
-                                    alt={blog.title}
-                                />
-                            </section>
-                        </div>
-                        <div className="col-md-8">
-                            <section>
-                                <div className="pb-3">{renderHTML(blog.excerpt)}</div>
-                                <Link href={`/blogs/${blog.slug}`}>
-                                    <a className="btn btn-secondary pt-2">Read more</a>
-                                </Link>
-                            </section>
-                        </div>
-                    </div>
                 </div>
-            </div>
-        </div>
     );
 };
 

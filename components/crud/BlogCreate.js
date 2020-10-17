@@ -36,15 +36,16 @@ const CreateBlog = ({ router }) => {
     const [body, setBody] = useState(blogFromLS());
     const [values, setValues] = useState({
         error: '',
-        sizeError: '',
+        displayHTML: '',
         loading: '',
         success: '',
         formData: '',
         title: '',
+        gist: '',
         hidePublishButton: false
     });
 
-    const { error, sizeError, loading, success, formData, title, hidePublishButton } = values;
+    const { error, displayHTML, loading, success, formData, title, gist, hidePublishButton } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -185,12 +186,18 @@ const CreateBlog = ({ router }) => {
             <form onSubmit={publishBlog}>
                 <div className="form-group">
                     <label className="text-muted">Title</label>
-                    <input type="text" className="form-control" value={title} onChange={handleChange('title')} />
+                    <input type="text" placeholder="Title of the blog" className="form-control" value={title} onChange={handleChange('title')} />
+                </div>
+
+                <div className="form-group">
+                    <label className="text-muted">Gist</label>
+                    <input type="text" placeholder="A small gist about the blog" className="form-control" value={gist} onChange={handleChange('gist')} />
                 </div>
 
                 <div className="form-group">
                     {/* <EditorToolbar/> */}
                     <ReactQuill
+                        // theme="bubble"
                         modules={QuillModules}
                         formats={QuillFormats}
                         value={body}
@@ -214,30 +221,32 @@ const CreateBlog = ({ router }) => {
         <div className="container-fluid pb-5">
             <div className="row">
                 <div className="col-md-4">
-                    <div>
-                        <div className="form-group pb-2">
-                            <h5>Featured image</h5>
-                            <hr />
+                    <div className="sticky">
+                        <div>
+                                <div className="form-group pb-2">
+                                    <h5>Featured image</h5>
+                                    <hr />
 
-                            <small className="text-muted">Max size: 1mb</small>
-                            <br />
-                            <label className="btn btn-outline-warning">
-                                Upload featured image
-                                <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
-                            </label>
+                                    <small className="text-muted">Max size: 1mb</small>
+                                    <br />
+                                    <label className="btn btn-outline-warning">
+                                        Upload featured image
+                                        <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <h5>Categories</h5>
+                                <hr />
+
+                                <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showCategories()}</ul>
+                            </div>
+                            <div>
+                                <h5>Tags</h5>
+                                <hr />
+                                <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showTags()}</ul>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <h5>Categories</h5>
-                        <hr />
-
-                        <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showCategories()}</ul>
-                    </div>
-                    <div>
-                        <h5>Tags</h5>
-                        <hr />
-                        <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showTags()}</ul>
-                    </div>
                 </div>
                 <div className="col-md-8">
                     {createBlogForm()}

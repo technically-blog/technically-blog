@@ -6,8 +6,10 @@ import { useState } from 'react';
 import { listBlogsWithCategoriesAndTags } from '../../actions/blog';
 import Card from '../../components/blog/Card';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
+import Bulb from './Bulb';
 
-const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, router }) => {
+const Blogs = ({ blogs, categories, totalBlogs, blogsLimit, blogSkip, router }) => {
+
     const head = () => (
         <Head>
             <title>Programming blogs | {APP_NAME}</title>
@@ -67,6 +69,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             return (
                 <article key={i}>
                     <Card blog={blog} />
+                    <hr/>
                 </article>
             );
         });
@@ -74,89 +77,9 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
     const showAllCategories = () => {
         return categories.map((c, i) => {
-            let number = Math.round(Math.random() * 10) % 7;
-            switch(number) {
-                case 1:
-                    return <Link href={`/categories/${c.slug}`} key={i}>
-                        <a className="btn btn-outline-secondary mr-1 ml-1 mt-3">{c.name}</a>
-                    </Link>
-                    break;
-                case 2:
-                    return <Link href={`/categories/${c.slug}`} key={i}>
-                        <a className="btn btn-outline-primary mr-1 ml-1 mt-3">{c.name}</a>
-                    </Link>
-                case 3:
-                    return <Link href={`/categories/${c.slug}`} key={i}>
-                        <a className="btn btn-outline-warning mr-1 ml-1 mt-3">{c.name}</a>
-                    </Link>
-                case 4:
-                    return <Link href={`/categories/${c.slug}`} key={i}>
-                        <a className="btn btn-outline-danger mr-1 ml-1 mt-3">{c.name}</a>
-                    </Link>
-                case 5:
-                    return <Link href={`/categories/${c.slug}`} key={i}>
-                        <a className="btn btn-outline-info mr-1 ml-1 mt-3">{c.name}</a>
-                    </Link>
-                case 6:
-                    return <Link href={`/categories/${c.slug}`} key={i}>
-                        <a className="btn btn-outline-success mr-1 ml-1 mt-3">{c.name}</a>
-                    </Link>
-                case 7:
-                    return <Link href={`/categories/${c.slug}`} key={i}>
-                        <a className="btn btn-outline-dark mr-1 ml-1 mt-3">{c.name}</a>
-                    </Link>
-                default :
-                    return <Link href={`/categories/${c.slug}`} key={i}>
-                    <a className="btn btn-outline-warning mr-1 ml-1 mt-3">{c.name}</a>
-                    </Link>
-            }
-            // return <Link href={`/categories/${c.slug}`} key={i}>
-            //     <a className="btn btn-secondary mr-1 ml-1 mt-3">{c.name}</a>
-            // </Link>
-        });
-    };
-
-    const showAllTags = () => {
-        return tags.map((t, i) => {
-            let number = Math.round(Math.random() * 10) % 7;
-            switch(number) {
-                case 1:
-                    return <Link href={`/tags/${t.slug}`} key={i}>
-                        <a className="btn btn-secondary mr-1 ml-1 mt-3">{t.name}</a>
-                    </Link>
-                    break;
-                case 2:
-                    return <Link href={`/tags/${t.slug}`} key={i}>
-                        <a className="btn btn-primary mr-1 ml-1 mt-3">{t.name}</a>
-                    </Link>
-                case 3:
-                    return <Link href={`/tags/${t.slug}`} key={i}>
-                        <a className="btn btn-warning mr-1 ml-1 mt-3">{t.name}</a>
-                    </Link>
-                case 4:
-                    return <Link href={`/tags/${t.slug}`} key={i}>
-                        <a className="btn btn-danger mr-1 ml-1 mt-3">{t.name}</a>
-                    </Link>
-                case 5:
-                    return <Link href={`/tags/${t.slug}`} key={i}>
-                        <a className="btn btn-info mr-1 ml-1 mt-3">{t.name}</a>
-                    </Link>
-                case 6:
-                    return <Link href={`/tags/${t.slug}`} key={i}>
-                        <a className="btn btn-success mr-1 ml-1 mt-3">{t.name}</a>
-                    </Link>
-                case 7:
-                    return <Link href={`/tags/${t.slug}`} key={i}>
-                        <a className="btn btn-dark mr-1 ml-1 mt-3">{t.name}</a>
-                    </Link>
-                default :
-                    return <Link href={`/tags/${t.slug}`} key={i}>
-                        <a className="btn btn-warning mr-1 ml-1 mt-3">{t.name}</a>
-                    </Link>
-            }
-            // <Link href={`/tags/${t.slug}`} key={i}>
-            //     <a className="btn btn-outline-secondary mr-1 ml-1 mt-3">{t.name}</a>
-            // </Link>
+            return <Link href={`/categories/${c.slug}`} key={i}>
+                <a className="btn btn-outline-secondary mr-1 ml-1 mt-3">{c.name}</a>
+            </Link>
         });
     };
 
@@ -173,25 +96,54 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
             {head()}
             <Layout>
                 <main>
-                    <div className="container-fluid">
-                        <header>
-                            <div className="col-md-12 pt-3">
-                                <h1 className="display-4 font-weight-bold text-center">
-                                    What are you looking for today...
-                                </h1>
-                            </div>
-                            <section>
-                                <div className="pb-5 text-center">
-                                    {showAllCategories()}
-                                    <br />
-                                    {showAllTags()}
+                   <article> 
+                        <div style={{backgroundColor: 'rgb(255,153,0)', maxHeight: 'max-content'}}>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-md-8" style={{paddingTop:'1rem'}}>
+                                        <h1 style={{fontSize: '5rem', fontFamily: 'ui-sans-serif', padding: 'inherit'}}>
+                                            Discover your stack<br/>
+                                            InBrief
+                                        </h1>
+                                        <div style={{fontSize: 'large', padding: 'inherit', paddingBottom: '2rem'}}> 
+                                            Explore and Share your stack. Everyone’s welcome.
+                                        </div>
+                                        <div style={{padding: 'inherit', paddingBottom: '4rem'}}> 
+                                            <a className="btn btn-outline-secondary" href="/categories/react">Get Started</a>
+                                        </div>
+                                    </div> 
+                                    <div className="col-md-4 bulb" style={{padding: '2rem'}}>
+                                        <Bulb/>
+                                    </div>
                                 </div>
-                            </section>
-                        </header>
-                    </div>
-                    <div className="container-fluid">{showAllBlogs()}</div>
-                    <div className="container-fluid">{showLoadedBlogs()}</div>
-                    <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
+                            </div>
+                        </div>
+                   </article>
+                   <section>
+                    <div className="container-fluid">
+                            <div className="row">
+                                <div className="col-md-4">
+                                    <div className="sticky">
+                                        <div>
+                                            <hr/>
+                                            <strong>DISCOVER MORE OF WHAT MATTERS TO YOU</strong>
+                                        </div>
+                                        <div className="pb-5">
+                                            {showAllCategories()}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-md-8">
+                                    <div style={{paddingTop: '10%'}}>
+                                        <hr/>
+                                        <div className="container-fluid">{showAllBlogs()}</div>
+                                        <div className="container-fluid">{showLoadedBlogs()}</div>
+                                        <div className="text-center pt-5 pb-5">{loadMoreButton()}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                    </section>  
                 </main>
             </Layout>
         </React.Fragment>
@@ -200,7 +152,7 @@ const Blogs = ({ blogs, categories, tags, totalBlogs, blogsLimit, blogSkip, rout
 
 Blogs.getInitialProps = () => {
     let skip = 0;
-    let limit = 2;
+    let limit = 7;
     return listBlogsWithCategoriesAndTags(skip, limit).then(data => {
         if (data.error) {
             console.log(data.error);
@@ -208,7 +160,6 @@ Blogs.getInitialProps = () => {
             return {
                 blogs: data.blogs,
                 categories: data.categories,
-                tags: data.tags,
                 totalBlogs: data.size,
                 blogsLimit: limit,
                 blogSkip: skip

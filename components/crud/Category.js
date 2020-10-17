@@ -1,23 +1,30 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import Router from 'next/router';
+import Router, { withRouter } from 'next/router';
 import { getCookie } from '../../actions/auth';
 import { create, getCategories, removeCategory } from '../../actions/category';
+import { API} from '../../config';
 
 const Category = () => {
     const [values, setValues] = useState({
         name: '',
+        info: '',
+        formData: '',
         error: false,
         success: false,
+        loading: false,
+        showButton: true,
         categories: [],
         removed: false,
         reload: false
     });
 
-    const { name, error, success, categories, removed, reload } = values;
+    const { name, info, error, loading, showButton, formData, success, categories, removed, reload } = values;
     const token = getCookie('token');
 
     useEffect(() => {
+        console.log("Page Mounted!!");
+        setValues({ ...values, formData: new FormData()});
         loadCategories();
     }, [reload]);
 
@@ -26,7 +33,7 @@ const Category = () => {
             if (data.error) {
                 console.log(data.error);
             } else {
-                setValues({ ...values, categories: data });
+                setValues({ ...values, categories: data, formData: new FormData()});
             }
         });
     };
@@ -34,14 +41,25 @@ const Category = () => {
     const showCategories = () => {
         return categories.map((c, i) => {
             return (
-                <button
-                    onDoubleClick={() => deleteConfirm(c.slug)}
-                    title="Double click to delete"
-                    key={i}
-                    className="btn btn-outline-warning mr-1 ml-1 mt-3"
-                >
-                    {c.name}
-                </button>
+                <div className="row" key={i}>
+                    <div className="col-md-4">
+                    <img className="img img-fluid"
+                        style={{ maxHeight: '160px', width: '100%', paddingTop: '0.7rem' }}
+                        src={`${API}/category/image/${c.slug}`}
+                        alt={c.title}/>
+                    </div>
+                    <div className="col-md-8">
+                        <div style={{fontSize: 'x-large', fontWeight: '700'}}>
+                            {c.name}
+                        </div>
+                        <div style={{fontSize: 'medium', color: 'gray'}}>
+                            {c.info}
+                        </div>
+                        <button key={i} className="btn btn-outline-danger mr-1 ml-1 mt-3" onClick={() => deleteConfirm(c.slug)}>
+                            DELETE
+                        </button>
+                    </div>
+                </div>
             );
         });
     };
@@ -66,18 +84,21 @@ const Category = () => {
 
     const clickSubmit = e => {
         e.preventDefault();
+        setValues({...values, loading: 'Loading...', showButton: false});
         // console.log('create category', name);
-        create({ name }, token).then(data => {
+        create(formData, token).then(data => {
             if (data.error) {
-                setValues({ ...values, error: data.error, success: false });
+                setValues({ ...values, error: data.error, success: false, loading: false });
             } else {
-                setValues({ ...values, error: false, success: true, name: '', reload: !reload });
+                setValues({ ...values, error: false, loading: false, success: true, name: '', info: '', reload: !reload });
             }
         });
     };
 
-    const handleChange = e => {
-        setValues({ ...values, name: e.target.value, error: false, success: false, removed: '' });
+    const handleChange = name => e => {
+        const value = name === 'image' ? e.target.files[0] : e.target.value;
+        formData.set(name, value);
+        setValues({ ...values, [name]: e.target.value, error: false, success: false, removed: '' });
     };
 
     const showSuccess = () => {
@@ -92,6 +113,12 @@ const Category = () => {
         }
     };
 
+    const showLoading = () => (
+        <div className="alert alert-info" style={{ display: loading ? '' : 'none' }}>
+            {loading}
+        </div>
+    );
+
     const showRemoved = () => {
         if (removed) {
             return <p className="text-danger">Category is removed</p>;
@@ -104,9 +131,17 @@ const Category = () => {
 
     const newCategoryFom = () => (
         <form onSubmit={clickSubmit}>
+            <label className="btn btn-outline-warning">
+                                Upload featured image
+                                <input onChange={handleChange('image')} type="file" accept="image/*" hidden />
+                            </label>
             <div className="form-group">
                 <label className="text-muted">Name</label>
-                <input type="text" className="form-control" onChange={handleChange} value={name} required />
+                <input type="text" className="form-control" onChange={handleChange('name')} value={name} required />
+            </div>
+            <div className="form-group">
+                <label className="text-muted">Information</label>
+                <input type="text" className="form-control" onChange={handleChange('info')} value={info} required />
             </div>
             <div>
                 <button type="submit" className="btn btn-warning">
@@ -121,6 +156,7 @@ const Category = () => {
             {showSuccess()}
             {showError()}
             {showRemoved()}
+            {showLoading()}
             <div onMouseMove={mouseMoveHandler}>
                 {newCategoryFom()}
                 {showCategories()}

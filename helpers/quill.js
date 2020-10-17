@@ -12,16 +12,15 @@ export const QuillModules = {
     toolbar: [
         [{ header: '1' }, { header: '2' }, { header: [3, 4, 5, 6] }, { font: [] }],
         [{ size: [] }],
-        ['bold', 'italic', 'underline'],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
         ['code-block'],
-        ['strike', 'blockquote']
         [{ list: 'ordered' }, { list: 'bullet' }],
         [{'align': []}],
         ['link', 'image', 'video'],
         [{ 'script': 'sub'}, { 'script': 'super' }],
-        ['clean'],
         [{ 'color': [] }, { 'background': [] }],
-        ['formula']
+        ['formula'],
+        //['fullscreen']
     ]
 };
 
@@ -32,19 +31,18 @@ export const QuillFormats = [
     "bold",
     "italic",
     "underline",
-    "align",
     "strike",
-    "script",
     "blockquote",
-    "background",
+    "code-block",
     "list",
     "bullet",
-    "indent",
+    "align",
     "link",
     "image",
     "video",
+    "script",
     "color",
-    "code-block",
+    "background",
     "formula"
   ];
 

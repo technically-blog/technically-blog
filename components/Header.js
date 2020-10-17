@@ -4,8 +4,7 @@ import Router from 'next/router';
 import NProgress from 'nprogress'
 import { APP_NAME } from '../config';
 import { signout, isAuth } from '../actions/auth';
-import Search from './blog/Search';
-import { useDarkMode } from 'next-dark-mode';
+// import Search from './blog/Search';
 import {
   Collapse,
   Navbar,
@@ -15,6 +14,7 @@ import {
   NavLink,
 } from 'reactstrap';
 import '.././node_modules/nprogress/nprogress.css';
+import InBrief from './InBrief';
 
 Router.onRouteChangeStart = url => NProgress.start();
 Router.onRouteChangeComplete = url => NProgress.done();
@@ -32,8 +32,8 @@ const Header = () => {
     <React.Fragment>
       <Navbar sticky="top"  className="navbar" light expand="md">
         <Link href="/">
-          <NavLink style={{ cursor: 'pointer' }} className="font-weight-bold">
-            {<img src={`/static/images/inbrief.png`} alt="In Brief" />}
+          <NavLink style={{ cursor: 'pointer' }}>
+            <InBrief/>
           </NavLink>
         </Link>
         <NavbarToggler onClick={toggle} />

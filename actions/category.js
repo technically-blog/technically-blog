@@ -7,10 +7,9 @@ export const create = (category, token) => {
         method: 'POST',
         headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(category)
+        body: category
     })
         .then(response => {
             handleResponse(response);

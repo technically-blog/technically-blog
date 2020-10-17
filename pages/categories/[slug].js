@@ -6,8 +6,9 @@ import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
 import renderHTML from 'react-render-html';
 import moment from 'moment';
 import Card from '../../components/blog/Card';
+import MinCard from '../../components/blog/minCard';
 
-const Category = ({ category, blogs, query }) => {
+const Category = ({ category, blogs, trendingBlogs, query }) => {
     const head = () => (
         <Head>
             <title>
@@ -33,23 +34,49 @@ const Category = ({ category, blogs, query }) => {
             {head()}
             <Layout>
                 <main>
-                    <div className="container-fluid">
+                    <article>
+                        <div className="container">
                         <header>
-                            <div className="col-md-12 pt-3">
-                                <div className="card mb-3">
-                                    <div className="card-body">
-                                        <h1 className="display-4 font-weight-bold">{category.name}</h1>
+                                <div className="col-md-12 pt-3">
+                                    <div className="row">
+                                        <div className="col-md-8">
+                                            <div style={{maxHeight: 'max-content'}}>
+                                            <img
+                                                src={`${API}/category/image/${category.slug}`}
+                                                alt={category.name}
+                                                className="img img-fluid"/>
+                                            </div>
+                                            {blogs.map((b, i) => (
+                                                <div key={i}>
+                                                    <Card key={i} blog={b} />
+                                                    <hr />
+                                                </div>))}
+                                        </div>
+                                        <div className="col-md-4">
+                                            <div className="sticky">
+                                                <div style={{fontSize: 'x-large', fontWeight: 'bolder'}}>
+                                                    {category.name}
+                                                </div>
+                                                <br/>
+                                                <div style={{fontSize: 'medium', color: 'gray'}}>
+                                                    {category.info}
+                                                </div>
+                                                <br/>
+                                                <div style={{fontWeight: 'bold'}}>
+                                                    POPULAR IN {category.name}
+                                                    <hr/>
+                                                </div>
+                                                {trendingBlogs.map((b, i) => (
+                                                    <div key={i}>
+                                                        <MinCard key={i} blog={b} />
+                                                    </div>))}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                {blogs.map((b, i) => (
-                                    <div key={i}>
-                                        <Card key={i} blog={b} />
-                                        <hr />
-                                    </div>
-                                ))}
-                            </div>
-                        </header>
-                    </div>
+                            </header>
+                         </div>
+                    </article>
                 </main>
             </Layout>
         </React.Fragment>
@@ -61,7 +88,7 @@ Category.getInitialProps = ({ query }) => {
         if (data.error) {
             console.log(data.error);
         } else {
-            return { category: data.category, blogs: data.blogs, query };
+            return { category: data.category, blogs: data.blogs, trendingBlogs: data.trendingBlogs, query };
         }
     });
 };

@@ -13,6 +13,7 @@ import { QuillModules, QuillFormats } from '../../helpers/quill';
 import { API } from '../../config';
 
 const BlogUpdate = ({ router }) => {
+
     const [body, setBody] = useState('');
 
     const [categories, setCategories] = useState([]);
@@ -28,11 +29,12 @@ const BlogUpdate = ({ router }) => {
         loading: '',
         formData: '',
         title: '',
+        gist: '',
         body: '',
         showUpdateButton: true
     });
 
-    const { error, loading, success, formData, title, showUpdateButton } = values;
+    const { error, loading, success, formData, title, gist, showUpdateButton } = values;
     const token = getCookie('token');
 
     useEffect(() => {
@@ -48,7 +50,9 @@ const BlogUpdate = ({ router }) => {
                 if (data.error) {
                     console.log(data.error);
                 } else {
-                    setValues({ ...values, title: data.title });
+                    setValues({ ...values, title: data.title, gist: data.gist });
+                    // formData.set('title', data.title);
+                    formData.set('gist', data.gist);
                     setBody(data.body);
                     setCategoriesArray(data.categories);
                     setTagsArray(data.tags);
@@ -178,7 +182,6 @@ const BlogUpdate = ({ router }) => {
     };
 
     const handleChange = name => e => {
-        // console.log(e.target.value);
         const value = name === 'photo' ? e.target.files[0] : e.target.value;
         formData.set(name, value);
         setValues({ ...values, [name]: value, formData, error: '' });
@@ -231,7 +234,12 @@ const BlogUpdate = ({ router }) => {
             <form onSubmit={editBlog}>
                 <div className="form-group">
                     <label className="text-muted">Title</label>
-                    <input type="text" className="form-control" value={title} onChange={handleChange('title')} />
+                    <input type="text" placeholder="Title of the blog" className="form-control" value={title} onChange={handleChange('title')} />
+                </div>
+
+                <div className="form-group">
+                    <label className="text-muted">Gist</label>
+                    <input type="text" placeholder="A small gist of the blog" className="form-control" value={gist} onChange={handleChange('gist')} />
                 </div>
 
                 <div className="form-group">
@@ -259,31 +267,33 @@ const BlogUpdate = ({ router }) => {
         <div className="container-fluid pb-5">
             <div className="row">
                 <div className="col-xl-4">
-                    <div>
-                        <div className="form-group pb-2">
-                            <h5>Featured image</h5>
-                            <hr />
-                            {body && (
-                                <img src={`${API}/blog/photo/${router.query.slug}`} alt={title} style={{ width: '100%', height: '300px' }} />
-                                )}
-                            <small className="text-muted">Max size: 1mb</small>
-                            <br />
-                            <label className="btn btn-outline-warning">
-                                Upload featured image
-                                <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
-                            </label>
+                    <div className="sticky">
+                        <div>
+                            <div className="form-group pb-2">
+                                <h5>Featured image</h5>
+                                <hr />
+                                {body && (
+                                    <img src={`${API}/blog/photo/${router.query.slug}`} alt={title} style={{ width: '100%', height: 'auto' }} />
+                                    )}
+                                <small className="text-muted">Max size: 1mb</small>
+                                <br />
+                                <label className="btn btn-outline-warning">
+                                    Upload featured image
+                                    <input onChange={handleChange('photo')} type="file" accept="image/*" hidden />
+                                </label>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <h5>Categories</h5>
-                        <hr />
+                        <div>
+                            <h5>Categories</h5>
+                            <hr />
 
-                        <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showCategories()}</ul>
-                    </div>
-                    <div>
-                        <h5>Tags</h5>
-                        <hr />
-                        <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showTags()}</ul>
+                            <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showCategories()}</ul>
+                        </div>
+                        <div>
+                            <h5>Tags</h5>
+                            <hr />
+                            <ul style={{ maxHeight: '200px', overflowY: 'scroll' }}>{showTags()}</ul>
+                        </div>
                     </div>
                 </div>
                 <div className="col-xl-8">

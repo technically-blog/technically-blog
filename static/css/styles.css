@@ -28,6 +28,12 @@ QUILL
   background: rgb(255,153,0);
 }
 
+.ql-snow .ql-editor pre.ql-syntax {
+  background-color: #ffffff;
+  color: #000000;
+  overflow: visible;
+}
+
 /* .ql-syntax {
   background-color: #18181483;
   overflow: visible;
@@ -35,7 +41,18 @@ QUILL
 
 /*
 */
+div.sticky {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  padding-top: 20%;
+  top: 0;
+}
 
+@media (max-width: 1024px) {
+  .bulb {
+    display: none;
+  }
+}
 /*
 FONTS
 */
@@ -126,15 +143,16 @@ QUILL VIDEO
 
 a.btn {
     text-decoration: none;
-    border-radius: 30px;
 }
 
 .btn-warning {
-    background-color: rgb(255,153,0);;
+    background-color: rgb(255,153,0);
 }
 
-.btn-secondary {
-  background-color: #232f3eb2;
+.btn-outline-secondary {
+  outline-color: rgb(0,0,0);
+  color: #000000;
+  border-color: #000000;
 }
 
 .mark {
@@ -143,8 +161,8 @@ a.btn {
 
 .avatar {
   vertical-align: middle;
-  width: 80px;
-  height: 80px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
 

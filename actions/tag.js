@@ -7,10 +7,9 @@ export const create = (tag, token) => {
         method: 'POST',
         headers: {
             Accept: 'application/json',
-            'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`
         },
-        body: JSON.stringify(tag)
+        body: tag
     })
         .then(response => {
             handleResponse(response);

@@ -7,7 +7,7 @@ const UserIndex = () => {
         <Layout>
             <Private>
             <div className="container-fluid">
-                    <div className="row">
+                    <div className="row" style={{padding: '3rem'}}>
                         <div className="col-md-12 pt-5 pb-5">
                             <h2>User Dashboard</h2>
                         </div>
@@ -27,7 +27,6 @@ const UserIndex = () => {
                                 </li>
                             </ul>
                         </div>
-                        <div className="col-md-8">right</div>
                     </div>
                 </div>
             </Private>

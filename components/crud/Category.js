@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
-import Router, { withRouter } from 'next/router';
 import { getCookie } from '../../actions/auth';
 import { create, getCategories, removeCategory } from '../../actions/category';
 import { API} from '../../config';
@@ -41,7 +39,7 @@ const Category = () => {
     const showCategories = () => {
         return categories.map((c, i) => {
             return (
-                <div className="row" key={i}>
+                <div className="row" key={i} style={{paddingBottom: '1rem', borderBottom: 'groove'}}>
                     <div className="col-md-4">
                     <img className="img img-fluid"
                         style={{ maxHeight: '160px', width: '100%', paddingTop: '0.7rem' }}
@@ -143,7 +141,7 @@ const Category = () => {
                 <label className="text-muted">Information</label>
                 <input type="text" className="form-control" onChange={handleChange('info')} value={info} required />
             </div>
-            <div>
+            <div style={{padding: '2rem 0 2rem 0'}}>
                 <button type="submit" className="btn btn-warning">
                     Create
                 </button>

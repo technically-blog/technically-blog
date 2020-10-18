@@ -3,6 +3,8 @@ import Head from 'next/head';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../config';
 import { withRouter } from 'next/router';
 import Link from 'next/link';
+import Thinking from '../components/index/Thinking';
+import Explore from '../components/index/Explore';
 
 const Index = ({router}) => {
 
@@ -34,70 +36,93 @@ const Index = ({router}) => {
         <React.Fragment>
             {head()}
             <Layout>
-                <article className="overflow-hidden">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-12 text-center">
-                                <h2 className="display-4 font-weight-bold">
-                                    Learn Your Stack 
-                                    <br/>
-                                    <strong className="display-3 font-weight-bold">
-                                    In Brief
-                                    </strong>
-                                </h2>
+                <div style={{maxHeight: 'max-content', backgroundColor: 'lightsalmon', padding: '3rem 3rem 0 3rem'}}> 
+                    <div className="row">
+                        <div className="col-md-8">
+                            <div style={{fontSize: '5rem'}}> 
+                                Explore 
+                                <strong> InBrief. </strong>
                             </div>
+                            <div style={{fontSize: '5rem'}}>
+                                to what matters to you.
+                            </div>
+                            <div style={{padding: '2rem 0 4rem'}}> 
+                                <a className="btn btn-outline-secondary" href="/blogs">Get Started</a>
+                            </div>
+                        </div>
+                        <div className="col-md-4 bulb">
+                            <Explore/>
                         </div>
                     </div>
-                    <br/>
-                    <div className="container">
-                        <div>
-                            <div className="col-md-12 text-center pb-3">
-                                <a href="/categories/react" className="mr-2 pb-2"><button type="button" className="btn btn-outline-primary mb-2">React</button></a>
-                                <a href="/categories/flutter" className="mr-2"><button type="button" className="btn btn-outline-success mb-2">Flutter</button></a>
-                                <a href="/categories/node.js" className="mr-2 pb-2"><button type="button" className="btn btn-outline-warning mb-2">Node.js</button></a>
-                                <a href="/categories/react" className="mr-2 pb-2"><button type="button" className="btn btn-outline-danger mb-2">Deno</button></a>
-                                <a href="/categories/react" className="mr-2 pb-2"><button type="button" className="btn btn-outline-info mb-2">Django</button></a>
-                                <a href="/categories/react" className="mr-2 pb-2"><button type="button" className="btn btn-outline-success mb-2">Kotlin</button></a>
-                                <a href="/categories/react" className="mr-2 pb-2"><button type="button" className="btn btn-outline-info mb-2">Rive-Flutter</button></a>
-                                <a href="/categories/react" className="mr-2"><button type="button" className="btn btn-outline-dark mb-2">React-Native</button></a>
-                                <a href="/categories/react" className="mr-2"><button type="button" className="btn btn-outline-warning mb-2">Flutter Web</button></a>
+                </div>
+                <div style={{backgroundColor: 'indianred', maxHeight: 'max-content', padding: '3rem 3rem 0 3rem'}}>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div style={{fontSize: '5rem', fontWeight: 'bold'}}> 
+                                Read.
+                                <br/>
+                                Share.
+                                <br/>
+                                Repeat. 
+                            </div>
+                            <div style={{padding: '2rem 0 4rem'}}> 
+                                <a className="btn btn-outline-secondary" href="/signin">Write Blogs</a>
                             </div>
                         </div>
-                        <div>
-                            <div className="col-md-12 text-center pb-3">
-                                <a className="mr-2" href="/categories/machine-learning"><button type="button" className="btn btn-outline-primary mb-2">Machine Learning</button></a>
-                                <a className="mr-2" href="/categories/react"> <button type="button" className="btn btn-outline-secondary mb-2">Deep Learning</button></a>
-                                <a className="mr-2" href="/categories/react"><button type="button" className="btn btn-outline-danger mb-2">Computer Vision</button></a>
-                                <a className="mr-2" href="/categories/react"><button type="button" className="btn btn-outline-dark mb-2">Natural Language Processing</button></a>
-                                <a className="mr-2" href="/categories/react"><button type="button" className="btn btn-outline-info mb-2">Image Processing</button></a>
-                                <a className="mr-2" href="/categories/react"><button type="button" className="btn btn-outline-success mb-2">Data Science</button></a>            
-                            </div>
-                            <div className="col-md-12 text-center">
-                                <a href="/categories/react" className="mr-2"><button type="button" className="btn btn-outline-info mb-2">Artificial Intelligence</button></a>
-                                <a href="/categories/react" className="mr-2"><button type="button" className="btn btn-outline-warning mb-2">Game Theory</button></a>
-                                <a href="/categories/react" className="mr-2"><button type="button" className="btn btn-outline-danger mb-2">Soft Computing</button></a>
-                                <a href="/categories/react" className="mr-2"><button type="button" className="btn btn-outline-warning mb-2">System Design</button></a>   
-                            </div>
-                        </div>
-                        <div>
-                            <div className="col-md-12 text-center pt-3 pb-3">
-                                <a className="mr-2" href="/categories/react"><button type="button" className="btn btn-outline-primary mb-2">Digital Marketing</button></a>
-                                <a href="/categories/react" className="mr-2"><button type="button" className="btn btn-outline-dark mb-2">Search Engine Optimization</button></a>
-                                <a href="/categories/react" className="mr-2"><button type="button" className="btn btn-outline-info mb-2">Blogging</button></a>
-                                <a href="/categories/react" className="mr-2"><button type="button" className="btn btn-outline-warning mb-2">Adsense</button></a>
-                                <a href="/categories/react" className="mr-2"><button type="button" className="btn btn-outline-info mb-2">Computer Science</button></a>
-                                <a href="/categories/react" className="mr-2" href="#"> <button type="button" className="btn btn-outline-secondary mb-2">Internet Of Things</button></a>
-                                        
-                            </div>
-                            <div className="col-md-12 text-center">
-                                <a className="mr-2" href="/categories/react"><button type="button" className="btn btn-outline-danger mb-2">Intelligent Systems</button></a>
-                                <a className="mr-2" href="/categories/react"><button type="button" className="btn btn-outline-success mb-2">Content Marketing</button></a>      
-                                <a className="mr-2" href="/categories/react"><button type="button" className="btn btn-outline-danger mb-2">Startups</button></a>
-                            </div>
+                        <div className="col-md-6 bulb" style={{fontSize: '4rem', fontWeight: '100'}}>
+                            I could either watch it 
+                            <br/>
+                            happen or be a part 
+                            <br/>
+                            of it. -Elon Musk
                         </div>
                     </div>
-                    
-                </article>
+                </div>
+                <div style={{backgroundColor: 'black',maxHeight: 'max-content', padding: '3rem', color: 'antiquewhite'}}>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div style={{fontSize: '3rem', fontWeight: '100', paddingLeft: 'inherit'}}> 
+                                Read as much as
+                                <br/>
+                                you want.
+                                <br/>
+                                We don't want you
+                                <br/>
+                                to stop exploring.
+                            </div>
+                        </div>
+                        <div className="col-md-6 bulb" style={{fontSize: '4rem', borderLeft: 'dashed'}}>
+                            No Membership.
+                            <br/>
+                            <strong>Unlimited Reading.</strong> 
+                        </div>
+                    </div>
+                </div>
+                <div style={{backgroundColor: 'darkseagreen', maxHeight: 'max-content', padding: '3rem', color: 'antiquewhite'}}>
+                    <div className="row">
+                        <div className="col-md-6">
+                            <div style={{fontSize: '3rem', fontWeight: '100', borderLeft: 'dashed', paddingLeft: 'inherit'}}> 
+                                If you don't write for 
+                                <br/>
+                                publication there is
+                                <br/>
+                                little point in writing
+                                <br/>
+                                at all.
+                            </div>
+                            <div style={{padding: '4rem 0 1rem'}}> 
+                                <a className="btn btn-outline-secondary" href="#">Apply for Publication</a>
+                            </div>
+                        </div>
+                        <div className="col-md-6 bulb" style={{fontSize: '3rem'}}>
+                            Apply for an 
+                            <br/>
+                            <strong>Publication </strong>
+                            <br/>
+                            if you are a community. 
+                        </div>
+                    </div>
+                </div>
             </Layout>
         </React.Fragment>
         

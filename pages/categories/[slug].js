@@ -63,7 +63,7 @@ const Category = ({ category, blogs, trendingBlogs, query }) => {
                                                 </div>
                                                 <br/>
                                                 <div style={{fontWeight: 'bold'}}>
-                                                    POPULAR IN {category.name}
+                                                    POPULAR IN {`${category.name}`.toUpperCase()}
                                                     <hr/>
                                                 </div>
                                                 {trendingBlogs.map((b, i) => (

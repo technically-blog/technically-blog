@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { listBlogsWithCategoriesAndTags } from '../../actions/blog';
 import Card from '../../components/blog/Card';
 import { API, DOMAIN, APP_NAME, FB_APP_ID } from '../../config';
-import Bulb from './Bulb';
+import Bulb from '../../components/blog/Bulb';
 
 const Blogs = ({ blogs, categories, totalBlogs, blogsLimit, blogSkip, router }) => {
 
@@ -109,7 +109,7 @@ const Blogs = ({ blogs, categories, totalBlogs, blogsLimit, blogSkip, router }) 
                                             Explore and Share your stack. Everyone’s welcome.
                                         </div>
                                         <div style={{padding: 'inherit', paddingBottom: '4rem'}}> 
-                                            <a className="btn btn-outline-secondary" href="/categories/react">Get Started</a>
+                                            <a className="btn btn-outline-secondary" href="/signin">Get Started</a>
                                         </div>
                                     </div> 
                                     <div className="col-md-4 bulb" style={{padding: '2rem'}}>
